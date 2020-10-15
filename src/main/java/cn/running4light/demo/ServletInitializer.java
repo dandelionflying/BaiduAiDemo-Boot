@@ -1,5 +1,6 @@
 package cn.running4light.demo;
 
+import cn.running4light.BaiduAiBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 

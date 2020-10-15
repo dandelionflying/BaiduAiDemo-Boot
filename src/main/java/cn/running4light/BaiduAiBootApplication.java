@@ -1,4 +1,4 @@
-package cn.running4light.demo;
+package cn.running4light;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

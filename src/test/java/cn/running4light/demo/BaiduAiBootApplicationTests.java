@@ -10,4 +10,9 @@ class BaiduAiBootApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void testAi(){
+
+	}
+
 }
