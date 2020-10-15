@@ -20,6 +20,7 @@
 	</properties>
 
 	<dependencies>
+		<!--	百度AI java-sdk	-->
 		<dependency>
 			<groupId>com.baidu.aip</groupId>
 			<artifactId>java-sdk</artifactId>

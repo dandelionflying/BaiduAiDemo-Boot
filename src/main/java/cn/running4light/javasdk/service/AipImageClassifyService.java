@@ -1,11 +1,12 @@
 package cn.running4light.javasdk.service;
 
 import cn.running4light.common.Result;
+import org.springframework.stereotype.Service;
 
 /**
- *
+ *  图形识别接口
  */
-public interface ApiService {
+public interface AipImageClassifyService {
     /**
      *  @Description    通用物体识别
      *  @Author running4light朱泽雄

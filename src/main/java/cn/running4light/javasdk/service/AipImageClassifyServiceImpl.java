@@ -10,13 +10,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- *  @Description    接口实现
+ *  @Description    图像识别--接口实现
  *  @Author running4light朱泽雄
  *  @CreateTime 10:51 2020/10/15
  *
  */
 @Service
-public class ApiServiceImpl implements ApiService{
+public class AipImageClassifyServiceImpl implements AipImageClassifyService {
     @Override
     public Result advancedGeneral() {
         AipImageClassify client = AipImageClassifyUtil.getSingleton();

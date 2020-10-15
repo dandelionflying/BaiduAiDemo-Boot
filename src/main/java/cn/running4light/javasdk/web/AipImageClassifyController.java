@@ -1,24 +1,24 @@
 package cn.running4light.javasdk.web;
 
 import cn.running4light.common.Result;
-import cn.running4light.javasdk.service.ApiService;
+import cn.running4light.javasdk.service.AipImageClassifyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- *  @Description
+ *  @Description    图图像别
  *  @Author running4light朱泽雄
  *  @CreateTime 10:44 2020/10/15
  *
  */
-@RequestMapping("api")
+@RequestMapping("aip-image")
 @RestController
-public class ApiController {
+public class AipImageClassifyController {
 
     @Autowired
-    private ApiService apiService;
+    private AipImageClassifyService aipImageClassifyService;
     /**
      *  @Description    通用物体识别
      *  @Author running4light朱泽雄
@@ -27,7 +27,7 @@ public class ApiController {
      */
     @GetMapping("advancedGeneral")
     public Result advancedGeneral(){
-        return apiService.advancedGeneral();
+        return aipImageClassifyService.advancedGeneral();
     }
     /**
      *  @Description    菜品识别
@@ -37,7 +37,7 @@ public class ApiController {
      */
     @GetMapping("dishDetect")
     public Result dishDetect(){
-        return apiService.dishDetect();
+        return aipImageClassifyService.dishDetect();
     }
     /**
      *  @Description    车辆识别--检测一张车辆图片的具体车型
@@ -47,7 +47,7 @@ public class ApiController {
      */
     @GetMapping("carDetect")
     public Result carDetect(){
-        return apiService.carDetect();
+        return aipImageClassifyService.carDetect();
     }
     /**
      *  @Description    车辆检测--传入单帧图像，检测图片中所有机动车辆，返回每辆车的类型和坐标位置，
@@ -59,7 +59,7 @@ public class ApiController {
      */
     @GetMapping("vehicleDetect")
     public Result vehicleDetect(){
-        return apiService.vehicleDetect();
+        return aipImageClassifyService.vehicleDetect();
     }
     /**
      *  @Description    车辆外观损伤识别--针对常见的小汽车车型，传入单帧图像，识别车辆外观受损部件及损伤类型，
@@ -70,7 +70,7 @@ public class ApiController {
      */
     @GetMapping("vehicleDamage")
     public Result vehicleDamage(){
-        return apiService.vehicleDamage();
+        return aipImageClassifyService.vehicleDamage();
     }
     /**
      *  @Description    logo商标识别
@@ -80,7 +80,7 @@ public class ApiController {
      */
     @GetMapping("logoSearch")
     public Result logoSearch(){
-        return apiService.logoSearch();
+        return aipImageClassifyService.logoSearch();
     }
     /**
      *  @Description    动物识别
@@ -90,7 +90,7 @@ public class ApiController {
      */
     @GetMapping("animalDetect")
     public Result animalDetect(){
-        return apiService.animalDetect();
+        return aipImageClassifyService.animalDetect();
     }
     /**
      *  @Description    植物识别
@@ -100,6 +100,6 @@ public class ApiController {
      */
     @GetMapping("plantDetect")
     public Result plantDetect(){
-        return apiService.plantDetect();
+        return aipImageClassifyService.plantDetect();
     }
 }
