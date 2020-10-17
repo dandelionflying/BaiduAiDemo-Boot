@@ -22,7 +22,7 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result detect() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         options.put("face_field", "age,beauty,expression,face_shape,gender,glasses,landmark,landmark72,landmark150,race,quality,eye_status,emotion,face_type");//
         options.put("max_face_num", "2");// 最多处理人脸的数目
         options.put("face_type", "LIVE");// 人脸的类型:LIVE--生活照,IDCARD--身份证芯片照,WATERMARK--带水印证件照,CERT--证件照片
@@ -45,7 +45,7 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result search() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         options.put("max_face_num", "3");// 最多处理人脸的数目(默认值为1(仅检测图片中面积最大的那个人脸) 最大值10)
         options.put("match_threshold", "70");//匹配阈值（设置阈值后，score低于此阈值的用户信息将不会返回） 最大100 最小0 默认80 此阈值设置得越高，检索速度将会越快，推荐使用默认阈值80
         options.put("quality_control", "NORMAL");// 图片质量控制:NONE LOW NORMAL HIGH
@@ -63,7 +63,7 @@ public class AipFaceServiceImpl implements AipFaceService {
 
         // 人脸搜索
         JSONObject res = aipFace.search(image, imageType, groupIdList, options);
-        System.out.println(res.toString(2));
+        printRes(res);
         if(res.getInt("error_code") == 0){
             Map<String, Object> stringObjectMap = res.toMap();
             return new Result("2000","查询成功",stringObjectMap);
@@ -80,7 +80,7 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result addUser() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         options.put("user_info", "user's info");
         options.put("quality_control", "NORMAL");// 图片质量控制 NONE LOW NORMAL HIGH
         options.put("liveness_control", "LOW");// 活体检测控制 NONE LOW NORMAL HIGH
@@ -92,7 +92,7 @@ public class AipFaceServiceImpl implements AipFaceService {
 
         // 人脸注册
         JSONObject res = aipFace.addUser(image, imageType, groupId, userId, options);
-        System.out.println(res.toString(2));
+        printRes(res);
         Map<String, Object> stringObjectMap = res.toMap();
         if(res.getInt("error_code") == 0){
             return new Result("2000","查询成功",stringObjectMap);
@@ -104,12 +104,12 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result faceDelete() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         String groupId = "08042";
         String userId = "0927";
         String faceToken = "";// 需要删除的人脸图片token，（由数字、字母、下划线组成）长度限制64B
         JSONObject res = aipFace.faceDelete(userId, groupId, faceToken, options);
-        System.out.println(res.toString(2));
+        printRes(res);
         Map<String, Object> stringObjectMap = res.toMap();
         if(res.getInt("error_code") == 0){
             return new Result("2000","删除成功",stringObjectMap);
@@ -121,11 +121,11 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result getUser() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         String groupId = "08042";
         String userId = "0927";
         JSONObject res = aipFace.getUser(userId, groupId, options);
-        System.out.println(res.toString(2));
+        printRes(res);
         Map<String, Object> stringObjectMap = res.toMap();
         if(res.getInt("error_code") == 0){
             return new Result("2000","查询成功",stringObjectMap);
@@ -137,11 +137,11 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result faceGetlist() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         String groupId = "08042";
         String userId = "0927";
         JSONObject res = aipFace.faceGetlist(userId, groupId, options);
-        System.out.println(res.toString(2));
+        printRes(res);
         Map<String, Object> stringObjectMap = res.toMap();
         if(res.getInt("error_code") == 0){
             return new Result("2000","查询成功",stringObjectMap);
@@ -153,10 +153,10 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result getGroupUsers() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         String groupId = "08042";
         JSONObject res = aipFace.getGroupUsers(groupId, options);
-        System.out.println(res.toString(2));
+        printRes(res);
         Map<String, Object> stringObjectMap = res.toMap();
         if(res.getInt("error_code") == 0){
             return new Result("2000","查询成功",stringObjectMap);
@@ -168,12 +168,12 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result userCopy() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         options.put("src_group_id", "");
         options.put("dst_group_id", "");
         String userId = "08042";
         JSONObject res = aipFace.userCopy(userId, options);
-        System.out.println(res.toString(2));
+        printRes(res);
         Map<String, Object> stringObjectMap = res.toMap();
         if(res.getInt("error_code") == 0){
             return new Result("2000","查询成功",stringObjectMap);
@@ -185,11 +185,11 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result deleteUser() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         String groupId = "08042";
         String userId = "08042";
         JSONObject res = aipFace.deleteUser(groupId, userId, options);
-        System.out.println(res.toString(2));
+        printRes(res);
         Map<String, Object> stringObjectMap = res.toMap();
         if(res.getInt("error_code") == 0){
             return new Result("2000","删除成功",stringObjectMap);
@@ -201,10 +201,10 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result groupAdd() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         String groupId = "08042";
         JSONObject res = aipFace.groupAdd(groupId, options);
-        System.out.println(res.toString(2));
+        printRes(res);
         Map<String, Object> stringObjectMap = res.toMap();
         if(res.getInt("error_code") == 0){
             return new Result("2000","创建成功",stringObjectMap);
@@ -216,10 +216,10 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result groupDelete() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         String groupId = "08042";
         JSONObject res = aipFace.groupDelete(groupId, options);
-        System.out.println(res.toString(2));
+        printRes(res);
         Map<String, Object> stringObjectMap = res.toMap();
         if(res.getInt("error_code") == 0){
             return new Result("2000","删除成功",stringObjectMap);
@@ -231,11 +231,11 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result getGroupList() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         options.put("start", "0");// 默认值0，起始序号
         options.put("length", "50");// 返回数量，默认值100，最大值1000
         JSONObject res = aipFace.getGroupList(options);
-        System.out.println(res.toString(2));
+        printRes(res);
         Map<String, Object> stringObjectMap = res.toMap();
         if(res.getInt("error_code") == 0){
             return new Result("2000","查询成功",stringObjectMap);
@@ -247,7 +247,7 @@ public class AipFaceServiceImpl implements AipFaceService {
     @Override
     public Result faceMatch() {
         AipFace aipFace = AipFaceUtil.getInstance();
-        HashMap<String, String> options = new HashMap<String, String>();
+        HashMap<String, String> options = new HashMap<>();
         // 华晨宇 uid：08042
         String image1 = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1602918459391&di=57c200791c2956810f2148f782cd5bb5&imgtype=0&src=http%3A%2F%2Fe0.ifengimg.com%2F12%2F2018%2F1215%2F987EDE1CAF43DDE3CF60CBBAA8EB52AD73C316AB_size153_w1967_h1229.jpeg";
         // 华晨宇 uid:0927
@@ -265,12 +265,20 @@ public class AipFaceServiceImpl implements AipFaceService {
         requests.add(req2);
 
         JSONObject res = aipFace.match(requests);
-        System.out.println(res.toString(2));
+        printRes(res);
         Map<String, Object> stringObjectMap = res.toMap();
         if(res.getInt("error_code") == 0){
             return new Result("2000","查询成功",stringObjectMap);
         }else{
             return new Result("2001","aip错误",stringObjectMap);
         }
+    }
+    /**
+     *  @description 输出
+     *  @Author running4light朱泽雄
+     *  @CreateTime 16:51 2020/10/17
+     */
+    private void printRes(JSONObject res){
+        System.out.println(res.toString(2));
     }
 }
