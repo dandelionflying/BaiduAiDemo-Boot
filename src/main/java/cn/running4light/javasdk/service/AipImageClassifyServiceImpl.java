@@ -24,9 +24,13 @@ public class AipImageClassifyServiceImpl implements AipImageClassifyService {
         options.put("baike_num", "10");
         String image = "D:\\zzx\\pictures\\549eb0de14cec408696abf7c93cadb68.jpg";
         JSONObject res = client.advancedGeneral(image, options);
-        Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
         System.err.println(res);
-        return new Result("200","查询成功！",stringObjectMap);
+        if("0".equals(res.get("error_code"))){
+            Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
+            return new Result("2000","查询成功",stringObjectMap);
+        }else{
+            return new Result("2001","aip错误",null);
+        }
     }
 
     @Override
@@ -38,9 +42,13 @@ public class AipImageClassifyServiceImpl implements AipImageClassifyService {
         options.put("baike_num", "6");// 返回百科信息的结果数，默认不返回
         String image = "D:\\zzx\\pictures\\architecture-buildings-business-city-325185.jpg";
         JSONObject res = client.dishDetect(image, options);
-        Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
         System.err.println(res);
-        return new Result("200","查询成功！",stringObjectMap);
+        if("0".equals(res.get("error_code"))){
+            Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
+            return new Result("2000","查询成功",stringObjectMap);
+        }else{
+            return new Result("2001","aip错误",null);
+        }
     }
 
     @Override
@@ -51,9 +59,13 @@ public class AipImageClassifyServiceImpl implements AipImageClassifyService {
         options.put("baike_num", "6");// 返回百科信息的结果数，默认不返回
         String image = "D:\\zzx\\pictures\\architecture-buildings-business-city-325185.jpg";
         JSONObject res = client.carDetect(image, options);
-        Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
         System.err.println(res);
-        return new Result("200","查询成功！",stringObjectMap);
+        if("0".equals(res.get("error_code"))){
+            Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
+            return new Result("2000","查询成功",stringObjectMap);
+        }else{
+            return new Result("2001","aip错误",null);
+        }
     }
 
     @Override
@@ -68,9 +80,13 @@ public class AipImageClassifyServiceImpl implements AipImageClassifyService {
         options.put("area", "‘x1,y1,x2,y2,x3,y3...xn,yn'");
         String image = "D:\\zzx\\pictures\\architecture-buildings-business-city-325185.jpg";
         JSONObject res = client.vehicleDetect(image, options);
-        Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
         System.err.println(res);
-        return new Result("200","查询成功！",stringObjectMap);
+        if("0".equals(res.get("error_code"))){
+            Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
+            return new Result("2000","查询成功",stringObjectMap);
+        }else{
+            return new Result("2001","aip错误",null);
+        }
     }
 
     @Override
@@ -79,9 +95,13 @@ public class AipImageClassifyServiceImpl implements AipImageClassifyService {
         HashMap<String, String> options = new HashMap<String, String>();
         String image = "D:\\zzx\\pictures\\architecture-buildings-business-city-325185.jpg";
         JSONObject res = client.vehicleDamage(image, options);
-        Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
         System.err.println(res);
-        return new Result("200","查询成功！",stringObjectMap);
+        if("0".equals(res.get("error_code"))){
+            Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
+            return new Result("2000","查询成功",stringObjectMap);
+        }else{
+            return new Result("2001","aip错误",null);
+        }
     }
 
     @Override
@@ -91,9 +111,13 @@ public class AipImageClassifyServiceImpl implements AipImageClassifyService {
         options.put("custom_lib", "false");// 是否只使用自定义logo库的结果，默认false：返回自定义库+默认库的识别结果
         String image = "D:\\zzx\\pictures\\architecture-buildings-business-city-325185.jpg";
         JSONObject res = client.logoSearch(image, options);
-        Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
         System.err.println(res);
-        return new Result("200","查询成功！",stringObjectMap);
+        if("0".equals(res.get("error_code"))){
+            Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
+            return new Result("2000","查询成功",stringObjectMap);
+        }else{
+            return new Result("2001","aip错误",null);
+        }
     }
 
     @Override
@@ -103,9 +127,13 @@ public class AipImageClassifyServiceImpl implements AipImageClassifyService {
         options.put("baike_num", "5");// 返回百科信息的结果数，默认不返回
         String image = "D:\\zzx\\pictures\\architecture-buildings-business-city-325185.jpg";
         JSONObject res = client.animalDetect(image, options);
-        Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
         System.err.println(res);
-        return new Result("200","查询成功！",stringObjectMap);
+        if("0".equals(res.get("error_code"))){
+            Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
+            return new Result("2000","查询成功",stringObjectMap);
+        }else{
+            return new Result("2001","aip错误",null);
+        }
     }
 
     @Override
@@ -116,8 +144,12 @@ public class AipImageClassifyServiceImpl implements AipImageClassifyService {
         options.put("baike_num", "5");// 返回百科信息的结果数，默认不返回
         String image = "D:\\zzx\\pictures\\architecture-buildings-business-city-325185.jpg";
         JSONObject res = client.plantDetect(image, options);
-        Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
         System.err.println(res);
-        return new Result("200","查询成功！",stringObjectMap);
+        if("0".equals(res.get("error_code"))){
+            Map<String, Object> stringObjectMap = res.toMap();// JSONObject没有序列化 无法正常解析
+            return new Result("2000","查询成功",stringObjectMap);
+        }else{
+            return new Result("2001","aip错误",null);
+        }
     }
 }
