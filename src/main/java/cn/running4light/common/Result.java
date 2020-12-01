@@ -5,11 +5,13 @@ import java.io.Serializable;
 /**
  *
  */
-public class Result implements Serializable {
+public class Result implements Serializable{
     private String status;
     private String msg;
     private Object data;
+    public Result(){
 
+    }
     public Result(String status, String msg, Object data) {
         this.status = status;
         this.msg = msg;
@@ -38,6 +40,12 @@ public class Result implements Serializable {
 
     public void setData(Object data) {
         this.data = data;
+    }
+
+    public static Result createSuccess(Object data){
+        Result result = new Result();
+        result.data = data;
+        return result;
     }
 
     @Override
